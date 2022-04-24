@@ -2,8 +2,17 @@
 @import './main.css';
 
 :root {
-  --text-base-size: 1em;
+  --color-text: #f7f7f7;
+  --font-primary: 'Klavika-light';
+  --font-secondary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Helvetica Neue', Arial, sans-serif;
+
+  /* set base values */
+  --text-base-size: clamp(1rem, 7.39vw + -0.912rem, 5rem);
   --text-scale-ratio: 1.2;
+
+  /* type scale */
+  --text-xs: calc(1em / (var(--text-scale-ratio) * var(--text-scale-ratio)));
   --text-sm: calc(1em / var(--text-scale-ratio));
   --text-md: calc(1em * var(--text-scale-ratio));
   --text-lg: calc(1em * var(--text-scale-ratio) * var(--text-scale-ratio));
@@ -11,32 +20,23 @@
     1em * var(--text-scale-ratio) * var(--text-scale-ratio) *
       var(--text-scale-ratio)
   );
-
   --text-xxl: calc(
     1em * var(--text-scale-ratio) * var(--text-scale-ratio) *
       var(--text-scale-ratio) * var(--text-scale-ratio)
   );
-
   --text-xxxl: calc(
     1em * var(--text-scale-ratio) * var(--text-scale-ratio) *
-      var(--text-scale-ratio) * var(--text-scale-ratio) *
       var(--text-scale-ratio) * var(--text-scale-ratio) *
       var(--text-scale-ratio)
   );
 
-  --spacing-baseline: 1em;
+  --spacing-baseline: clamp(1rem, 7.39vw + -0.912rem, 5rem);
   --space-xs: calc(0.5 * var(--space-baseline));
   --space-sm: calc(0.75 * var(--spacing-baseline));
   --space-md: calc(1.25 * var(--spacing-baseline));
   --space-lg: calc(2 * var(--spacing-baseline));
   --space-xl: calc(5.25 * var(--space-unit));
   --space-xxl: calc(8.25 * var(--space-unit));
-
-  --font-primary: 'Klavika-light', var(--native-font-fallback);
-  /* --font-bold: 'Klavika-bold', var(--native-font-fallback); */
-  --native-font-fallback: -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    'Roboto', 'Helvetica Neue', Arial, sans-serif;
-  --primary-color: #f7f7f7;
 }
 
 html {
@@ -49,9 +49,10 @@ body {
 }
 
 body {
-  background-color: #0c0c0c;
-  color: var(--primary-color);
-  font-family: var(--font-primary), var(--native-font-fallback);
+  background: #0c0c0c;
+  font-size: var(--text-base-size);
+  font-family: var(--font-primary), var(--font-secondary);
+  color: var(--color-text);
   overflow: hidden;
 }
 
@@ -61,4 +62,52 @@ body {
     max-width: 100%;
     min-width: 100%;
   }
+}
+
+h1,
+h2,
+h3,
+h4,
+form legend {
+  color: var(--color-text-heading);
+  margin-bottom: var(--space-xxs);
+  line-height: var(--heading-line-height);
+}
+
+/* text size */
+.text-xxxl {
+  font-size: var(--text-xxxl);
+}
+
+h1,
+.text-xxl {
+  font-size: var(--text-xxl);
+}
+
+h2,
+.text-xl {
+  font-size: var(--text-xl);
+}
+
+h3,
+.text-lg {
+  font-size: var(--text-lg);
+}
+
+h4,
+.text-md {
+  font-size: var(--text-md);
+}
+
+.text-sm,
+small {
+  font-size: var(--text-sm);
+}
+
+.text-xs {
+  font-size: var(--text-xs);
+}
+
+p {
+  line-height: var(--body-line-height);
 }
