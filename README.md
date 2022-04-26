@@ -10,7 +10,11 @@ To run the development preview.
 
 Navigate to the localhost url displayed in the output the default host is `localhost:1234`
 
-## main styles can be found in `main.scss`
+Screenshots are located in the directory `./Images`
+
+## main styles
+
+Mian styling is located in the stylesheet `./src/styles/main.css`
 
 ## Animation
 
