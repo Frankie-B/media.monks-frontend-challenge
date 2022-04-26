@@ -22,18 +22,18 @@ Animations are implemented using [GSAP](https://greensock.com/)
 
 ## Desktop (chrome)
 
-![desktop screenshot]('Images/desktop1.jpg)
+![desktop screenshot](Images/desktop1.jpg)
 
-![desktop screenshot]('Images/desktop2.jpg')
+![desktop screenshot](Images/desktop2.jpg)
 
-![desktop screenshot]('Images/desktop3.jpg')
+![desktop screenshot](Images/desktop3.jpg)
 
-![desktop4]('Images/desktop4.png')
+![desktop4](Images/desktop4.png)
 
 ## Browser Chromne (mobile)
 
-![mobile screenshot]('Images/mobile1.png')
+![mobile screenshot](Images/mobile1.png)
 
-![mobile screenshot]('Images/mobile2.png')
+![mobile screenshot](Images/mobile2.png)
 
-![mobile screenshot]('Images/mobile3.png')
+![mobile screenshot](Images/mobile3.png)
