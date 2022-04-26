@@ -74,7 +74,6 @@
 }
 
 .loader_copy {
-  /* border: 1px solid orangered; */
   font-style: italic;
 }
 
@@ -96,7 +95,6 @@
 /* container styles */
 
 .wrapper {
-  border: 1px solid orange;
   display: grid;
   grid-template-rows: auto 1fr auto;
   align-items: end;
@@ -121,6 +119,8 @@
   font-size: var(--text-sm);
   width: 460px;
   white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
 }
 
 #headingTopRight {
@@ -239,6 +239,8 @@ button span {
 .bottom_copy {
   font-size: 1rem;
   max-width: 498px;
+  visibility: hidden;
+  opacity: 0;
 }
 
 /* enlightenment styles */

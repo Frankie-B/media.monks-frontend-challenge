@@ -142,10 +142,10 @@ const navigateBackward = () => {
     if (currentActive > 0) {
         tl.add('reset');
         if (backgroundPosX < 0 || backgroundPosX <= -7000) {
-            tl.to('.wrapper', { backgroundPosition: '+=1500px 0', ease: 'none' }, 'reset');
+            tl.to('.wrapper', { duration: 0.65, backgroundPosition: '+=1500px 0', ease: 'none' }, 'reset');
         }
 
-        if (currentActive === 0) {
+        if (currentActive <= 1) {
             tl.to(['#headingTopLeft', '.bottom_copy'], { duration: 0.65, autoAlpha: 1, ease: 'power2.in' }, 'reset');
         }
 
@@ -229,9 +229,9 @@ const preloadAnimation = () => {
         .add('loader_end', '-=.75');
 
     /** Animation IN for main content * */
-    tl.add('main_start', '<loader_end').to(
-        '.wrapper',
-        { duration: 1.3, autoAlpha: 1, ease: 'power2.out' },
+    tl.add('main_start', '<loader_end').set(
+        ['.wrapper', '#headingTopLeft', '.bottom_copy'],
+        { autoAlpha: 1, ease: 'power2.out' },
         'main_start+=.4'
     );
 };

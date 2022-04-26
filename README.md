@@ -6,21 +6,30 @@ In order to run the project locally first install all the dependancies by runnin
 
 To run the development preview.
 
-` $ npm run start`
+`$ npm run start`
+
+Navigate to the localhost url displayed in the output the default host is `localhost:1234`
 
 ## main styles can be found in `main.scss`
 
-## Animations:
+## Animation
 
-Animations created with the use of GSAP. I chose to use [GSAP](https://greensock.com/), while I am sure the same could be achieved with pure css,
-with @keyframes. I am more familiar with gsap, also GSAP has a very robust timeline, that would allow me to position animations on multiple elements,
-in a cleaner way.
+Animations are implemented using [GSAP](https://greensock.com/)
 
-## Horizontal Scrolling:
+## Desktop (chrome)
 
-To challenge myself a little bit I chose to try an implement the horizontal scrolling feature without the use of GSAP'S scrollTrigger plugin.
-In my approach, I utilized the window's,  getComputedStyle method to find out the background position of the .main_wrapper. I then converted
-the value (string) into an integer that I could use to create a condition for the scroll behavior.
+![desktop screenshot]('Images/desktop1.jpg)
 
-** I noticed that the scroll forward between 1 and 2, and 2 and 3 was actually a bit smaller than the first step or the remaining steps forward. This was a
-nice little curve ball.
+![desktop screenshot]('Images/desktop2.jpg')
+
+![desktop screenshot]('Images/desktop3.jpg')
+
+![desktop4]('Images/desktop4.png')
+
+## Browser Chromne (mobile)
+
+![mobile screenshot]('Images/mobile1.png')
+
+![mobile screenshot]('Images/mobile2.png')
+
+![mobile screenshot]('Images/mobile3.png')
