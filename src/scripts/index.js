@@ -4,8 +4,8 @@ const tl = gsap.timeline();
 
 const enlightenmentItems = document.querySelectorAll('.active_item');
 
-const next = document.querySelector('.next');
-const prev = document.querySelector('.previous');
+const next = document.querySelector('.arrow .next');
+const prev = document.querySelector('.arrow .previous');
 
 const currentHeadingLeft = document.querySelector('#headingLeft');
 const currentHeadingRight = document.querySelector('#headingRight');
@@ -47,6 +47,11 @@ const init = () => {
     runAll();
 };
 
+const setActiveClass = (activeElement) => {
+    const active = document.querySelector('.active_item.active');
+    active.classList.remove('active');
+    enlightenmentItems[currentActive].classList.add('active');
+};
 const updateCopy = () => {
     currentActive %= enlightenmentItems.length;
 
@@ -89,7 +94,12 @@ const updateCopy = () => {
             [currentHeadingLeft, currentHeadingRight, currentLevelOfEnlightenment, '.arrow .next'],
             { duration: 0.125, autoAlpha: 0, ease: 'power2.in' },
             '<'
-        ).fromTo('.cta_container', { x: 1100 }, { duration: 0.65, autoAlpha: 1, x: 0, ease: 'power2.out' }, 'start');
+        ).fromTo(
+            ['.contact_container', '#headingTopRight'],
+            { x: 1100 },
+            { duration: 0.65, autoAlpha: 1, x: 0, ease: 'power2.out' },
+            'start'
+        );
     } else {
         currentHeadingRight.innerText = copy[currentActive];
         tl.fromTo(
@@ -106,17 +116,14 @@ const updateCopy = () => {
 };
 
 const moveBackground = () => {
-    const currentBackgroundPosition = document.querySelector('.main.container').style.backgroundPositionX;
-    const backgroundPosX = parseInt(currentBackgroundPosition);
-    console.log(backgroundPosX);
     if (currentActive < enlightenmentItems.length - 1) {
         tl.add('start');
         if (currentActive === 1 || currentActive === 2) {
-            tl.to('.main.container', { duration: 0.65, backgroundPositionX: `-=750px`, ease: 'none' }, 'start');
+            tl.to('.wrapper', { duration: 0.65, backgroundPositionX: `-=750px`, ease: 'none' }, 'start');
         } else if (currentActive === 7) {
-            tl.to('.main.container', { duration: 0.65, backgroundPositionX: `-9000px`, ease: 'none' }, 'start');
+            tl.to('.wrapper', { duration: 0.65, backgroundPositionX: `-9000px`, ease: 'none' }, 'start');
         } else {
-            tl.to('.main.container', { duration: 0.65, backgroundPositionX: `-=1500px`, ease: 'none' }, 'start');
+            tl.to('.wrapper', { duration: 0.65, backgroundPositionX: `-=1500px`, ease: 'none' }, 'start');
             tl.to('.arrow .previous', { duration: 0.65, autoAlpha: 1, ease: 'power2.out' }, '<');
         }
 
@@ -127,22 +134,19 @@ const moveBackground = () => {
         setActiveClass(currentActive);
     }
 };
+
 const navigateBackward = () => {
-    const currentBackgroundPosition = document.querySelector('.main.container').style.backgroundPositionX;
-    const backgroundPosX = parseInt(currentBackgroundPosition);
-    if (currentActive > 0 && currentActive < enlightenmentItems.length) {
-        if (backgroundPosX < 0 || backgroundPosX <= -9000) {
-            tl.add('start');
-            tl.to(
-                '.main.container',
-                {
-                    duration: 0.65,
-                    backgroundPositionX: `+=1500px`,
-                    ease: 'none',
-                },
-                'start'
-            );
-            tl.to('.cta_container', { duration: 0.65, autoAlpha: 1, x: 1100, ease: 'power2.in' }, 'start');
+    const mainBg = document.querySelector('.wrapper');
+    const bgPos = window.getComputedStyle(mainBg, null).backgroundPositionX;
+    const backgroundPosX = parseInt(bgPos);
+    if (currentActive > 0) {
+        tl.add('reset');
+        if (backgroundPosX < 0 || backgroundPosX <= -7000) {
+            tl.to('.wrapper', { backgroundPosition: '+=1500px 0', ease: 'none' }, 'reset');
+        }
+
+        if (currentActive === 0) {
+            tl.to(['#headingTopLeft', '.bottom_copy'], { duration: 0.65, autoAlpha: 1, ease: 'power2.in' }, 'reset');
         }
 
         currentActive--;
@@ -151,14 +155,8 @@ const navigateBackward = () => {
     }
 };
 
-const setActiveClass = (activeElement) => {
-    const active = document.querySelector('.active_item.active');
-    active.classList.remove('active');
-    enlightenmentItems[currentActive].classList.add('active');
-};
-
 const backToStart = () => {
-    tl.add('resetAll').to('.main.container', { duration: 0.65, backgroundPositionX: '0', ease: 'none' }, 'resetAll');
+    tl.add('resetAll').to('.wrapper', { duration: 0.65, backgroundPositionX: '0', ease: 'none' }, 'resetAll');
     tl.to('.arrow .next', { duration: 0.65, autoAlpha: 1, ease: 'power2.out' }, 'start');
 
     tl.to(['#headingTopLeft', '.bottom_copy'], { duration: 0.65, autoAlpha: 1, ease: 'power2.in' }, 'resetAll');
@@ -232,7 +230,7 @@ const preloadAnimation = () => {
 
     /** Animation IN for main content * */
     tl.add('main_start', '<loader_end').to(
-        '.main.container',
+        '.wrapper',
         { duration: 1.3, autoAlpha: 1, ease: 'power2.out' },
         'main_start+=.4'
     );

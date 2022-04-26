@@ -113,39 +113,81 @@
 .top-heading_container {
   display: flex;
   justify-content: space-between;
+  margin: 0 auto;
   width: 100%;
 }
 
-.heading.top-heading.right {
-  justify-self: flex-end;
+#headingTopLeft {
+  font-size: var(--text-sm);
+  width: 460px;
+  white-space: nowrap;
+}
+
+#headingTopRight {
+  position: absolute;
+  right: 11%;
+  white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
 }
 
 .heading {
-  font-size: var(--text-sm);
-  margin-top: var(--space-xs);
   text-decoration: underline;
   text-decoration-thickness: 0.01em;
   text-transform: uppercase;
-  width: 460px;
-  white-space: nowrap;
   will-change: transform;
+  white-space: normal;
+  width: 350px;
+}
+
+.mid-heading_container {
+  display: flex;
+  justify-content: space-between;
+  align-self: flex-end;
+  height: 275px;
+  width: 95%;
+
+  position: absolute;
+  left: 50%;
+  top: 62%;
+  transform: translate(-50%, -50%);
+}
+
+.mid-heading_container .mid_heading {
+  font-size: var(--text-xs);
+  white-space: normal;
+  width: 439px;
+  visibility: hidden;
+  opacity: 0;
+}
+
+#headingRight {
+  text-align: right;
+  margin-right: 4.9rem;
+  visibility: hidden;
+  opacity: 0;
+}
+
+#headingLeft {
+  text-align: left;
+  visibility: hidden;
+  opacity: 0;
 }
 
 button {
-  position: relative;
+  /* position: relative; */
   top: 70%;
+  transform: translateY(-50%);
   display: inline-block;
-  cursor: pointer;
   outline: none;
   border: 0;
   vertical-align: middle;
   text-decoration: none;
   background: transparent;
   padding: 5px;
-  color: var(--primary-color);
-  font-size: 2rem;
-  width: 45px;
-  height: 45px;
+  margin: auto;
+  width: 100%;
+  height: 100%;
 }
 
 button span {
@@ -153,44 +195,45 @@ button span {
   display: inline-block;
 }
 
-button span img {
-  height: 100%;
-  width: auto;
-}
-
 .arrow .previous {
+  cursor: pointer;
+  justify-self: flex-start;
   position: absolute;
   top: 50%;
+  left: 0;
   transform: translateY(-50%);
+  margin-left: var(--space-sm);
+  width: 45px;
+  height: 45px;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 2;
 }
 
 .arrow .next {
+  cursor: pointer;
   justify-self: flex-end;
   position: absolute;
   top: 50%;
   right: 0;
   transform: translate(-50%, -50%);
+  margin-right: var(--space-sm);
+  width: 45px;
+  height: 45px;
+  z-index: 2;
 }
 
-.active_container {
-  display: flex;
-  align-items: flex-end;
-  width: 250px;
-}
-
-.active_item {
-  border: 1.55px dotted var(--color-text);
-  height: 20px;
-  width: 30px;
-  list-style: none;
-  text-align: center;
-}
-
-.enlightenment_wrapper {
-  height: 150px;
-  margin-bottom: var(--space-xs);
-  padding: var(--space-xs);
+.bottom_container .content_container {
+  height: 100px;
   width: 100%;
+}
+
+.enlightenment_container .content_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 10%;
+  height: 100%;
 }
 
 .bottom_copy {
@@ -198,15 +241,104 @@ button span img {
   max-width: 498px;
 }
 
-.active_container {
-  max-width: ;
-}
+/* enlightenment styles */
 
 .enlightenment_container {
+  font-size: 0.9rem;
   display: flex;
+  justify-content: space-between;
+  height: 70px;
+  width: 100%;
+}
+
+.active_container {
+  display: flex;
+  flex: 2;
   align-items: center;
-  font-size: 1rem;
-  /* width: 100%; */
+  width: 100%;
+}
+
+.active-start {
+  cursor: pointer;
+}
+
+.steps.enlightenment {
+  color: var(--text-color);
+  font-family: var(--font-primary), var(--font-secondary);
+  align-self: flex-end;
+  margin-left: 0.6rem;
+  white-space: nowrap;
+  width: 240px;
+}
+
+.active_item {
+  border: 1.55px dashed var(--color-text);
+  height: 20px;
+  width: 30px;
+  list-style: none;
+  text-align: center;
+}
+
+.active {
+  background: var(--color-text);
+}
+
+.enlightenment_container .content_wrapper .logo {
+  position: absolute;
+  right: 0;
+  filter: invert(100%) sepia(0%) saturate(7480%) hue-rotate(279deg)
+    brightness(104%) contrast(98%);
+  height: 80px;
+  width: 80px;
+}
+
+/* end of .enlightenment styles */
+
+.contact_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.info_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.socials_container {
+  display: flex;
+  margin-top: 1.5rem;
+  text-align: right;
+  width: 240px;
+}
+
+.cta,
+.socials_container {
+  font-size: 0.8rem;
+}
+
+.social_link {
+  display: flex;
+  width: 100%;
+}
+
+.ri-mail-fill,
+.ri-facebook-fill,
+.ri-twitter-fill {
+  margin: 0 auto;
+}
+
+.link_emphasis {
+  text-decoration: underline;
 }
 
 .enlightenment_container .content_wrapper {
@@ -228,6 +360,7 @@ button span img {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
 }
 
 .info_container {
@@ -274,6 +407,7 @@ button span img {
 
   body {
     font-size: var(--text-base-size);
+    position: relative;
   }
 
   /* start of ulility classes */
@@ -303,22 +437,57 @@ button span img {
 
   /* end of utility classes */
 
-  .heading {
-    font-size: 2.5rem;
+  .top-heading_container {
+    position: relative;
+    top: 150px;
+  }
+
+  .contact_container {
+    top: 40%;
+    right: 11%;
+  }
+
+  #headingTopRight,
+  #headingTopLeft {
+    font-size: var(--text-xxxl);
     position: absolute;
-    top: 30%;
+    left: 10%;
+    transform: translateX(-50%);
+    width: 80%;
+  }
+
+  #headingTopLeft {
+    top: 20%;
+    transform: translateY(-20%);
+  }
+
+  #headingTopRight {
+    top: 20%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    height: auto;
-    width: 80%;
+    transform: translate(-50%, -20%);
   }
 
-  .top-heading.right {
-    width: 80%;
+  #headingLeft,
+  #headingRight {
+    font-size: 2.3rem;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    margin-right: var(--space-md);
+    width: 70%;
+    text-align: left;
   }
 
-  .top-heading.left {
-    margin: 0 auto;
+  #headingRight {
+    text-align: right;
+  }
+
+  button,
+  .arrow .next,
+  .arrow .previous {
+    height: 34px;
+    width: 34px;
   }
 
   .enlightenment_wrapper {
@@ -330,6 +499,20 @@ button span img {
 
   .enlightenment_container {
     height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 6rem;
+    width: 80%;
+  }
+
+  step_container {
+    position: relative;
+  }
+
+  #enlightenment {
+    position: absolute;
+    bottom: 50px;
+    left: 15%;
   }
 
   .active_container {
@@ -340,9 +523,5 @@ button span img {
     position: absolute;
     top: 0;
     right: 0;
-  }
-
-  .contact_container {
-    display: none;
   }
 }
